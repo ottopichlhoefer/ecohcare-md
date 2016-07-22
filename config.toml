@@ -1,0 +1,40 @@
+baseurl = "http://www.ecohcare.at"
+title = "ECOHCARE"
+canonifyurls = true
+paginate = 10
+theme = "startbootstrap-clean-blog"
+languageCode = "en-us"
+copyright = "Creative Commons Attribution - NoDerivs 3.0 Unported License"
+contentdir = "content"
+
+[author]
+  name = "Otto Pichlhöfer"
+
+[params]
+  DateForm = "Mon, Jan 2, 2006"
+  Description = "ECOHCARE is an Austrian study that assesses the health seeking behaviour of the whole population."
+  Author = "Otto Pichlhöfer"
+  email = "otto.pichlhoefer@meduniwien.ac.at"
+
+[[params.social]]
+  title = "twitter"
+  url = "https://twitter.com/docnord"
+[[params.social]]
+  title = "github"
+  url = "https://github.com/ottopichlhoefer"
+
+[[menu.main]]
+  name = "home"
+  url = "/"
+  weight = -200
+
+
+[[menu.main]]
+  name = "Archives"
+  url = "/post/"
+  weight = -180
+
+[[menu.main]]
+  name = "About"
+  url = "/about/about"
+  weight = -170
