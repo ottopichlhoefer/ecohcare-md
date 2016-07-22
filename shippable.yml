@@ -1,0 +1,54 @@
+language: python
+
+build:
+  pre_ci_boot:
+    image_name: abhi1010/hugo_015
+    image_tag: latest
+    pull: true
+
+# include only master branch for deployments
+branches:
+  only:
+    - master
+
+before_script:
+  - git config --global push.default matching
+  - rm -rf pandey1010.github.io
+  - git config --global user.email "abhi.pan@gmail.com"
+  - git config --global user.name "pandey1010"
+  - git config --get remote.origin.url
+  - git submodule init
+  - git submodule update
+  - git remote set-url origin git@github.com:pandey1010/pandey1010.github.io.git
+  - git clone git@github.com:pandey1010/pandey1010.github.io.git
+
+
+
+script:
+  - hugo -d pandey1010.github.io/
+
+after_success:
+  - echo `pwd`
+  - export NOW_HOUR=$(date +%d-%b-%H_%M)
+  - pwd && ls
+  - git config --get remote.origin.url
+  - git remote set-url origin git@github.com:pandey1010/pandey1010.github.io.git
+#  - git remote add origin git@github.com:pandey1010.github.io.git
+  - cd pandey1010.github.io
+  - pwd
+  - git status -s
+  - echo -e "a\n*\nq\n"|git add -i
+  - git commit -vam 'Automated build from Shippable - '$NOW_HOUR
+  - git remote show origin
+  - git push -v
+
+
+notifications:
+     email:
+         recipients:
+             - abhi.pandey@gmail.com
+         on_success: change
+         on_failure: always
+
+cache: true
+
