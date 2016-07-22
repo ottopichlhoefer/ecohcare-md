@@ -1,4 +1,4 @@
-baseurl = "http://www.ecohcare.at"
+baseurl = "https://pandey1010.github.io"
 title = "ECOHCARE"
 canonifyurls = true
 paginate = 10
